@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="JS Closet — Moda feminina, estilo e elegância.">
+  <title>JS Closet | Moda Feminina</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="header">
+  <a class="brand" href="#inicio" aria-label="JS Closet início">
+    <span class="brand-mark">JS</span>
+    <span><strong>JS</strong> <em>Closet</em><small>MODA FEMININA</small></span>
+  </a>
+  <nav>
+    <a href="#novidades">Novidades</a>
+    <a href="#vestidos">Vestidos</a>
+    <a href="#conjuntos">Conjuntos</a>
+    <a href="#looks">Looks</a>
+    <a href="#sobre">Sobre nós</a>
+  </nav>
+  <button class="cart-btn" onclick="openCart()">🛍️ <span>Carrinho</span><b id="cartCount">0</b></button>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="hero-copy">
+    <p class="eyebrow">JS CLOSET • MODA FEMININA</p>
+    <h1>Seu estilo,<br><span>sua essência.</span></h1>
+    <p>Peças escolhidas para deixar seus dias mais leves, elegantes e cheios de personalidade.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#novidades">Comprar agora</a>
+      <a class="btn ghost" href="#entrega">Como funciona a entrega</a>
+    </div>
+  </div>
+</section>
+
+<section class="intro">
+  <div><span>✨</span><p>Novidades selecionadas com carinho para você.</p></div>
+  <div><span>🛍️</span><p>Pedidos simples e atendimento pelo WhatsApp.</p></div>
+  <div><span>🚚</span><p>Fazemos entrega — consulte sua taxa.</p></div>
+</section>
+
+<section class="products-section" id="novidades">
+  <div class="section-heading">
+    <div><p class="eyebrow">SELEÇÃO ESPECIAL</p><h2>Novidades</h2></div>
+    <span class="section-note">Escolha seus favoritos 💗</span>
+  </div>
+  <div class="products" id="products"></div>
+</section>
+
+<section class="feature-banner" id="looks">
+  <div>
+    <p class="eyebrow">PARA CADA MOMENTO</p>
+    <h2>Monte seu look<br>do seu jeito.</h2>
+    <p>Combine peças, escolha seu tamanho e finalize seu pedido direto pelo WhatsApp.</p>
+    <a class="btn primary" href="#novidades">Ver peças</a>
+  </div>
+</section>
+
+<section class="products-section compact" id="vestidos">
+  <div class="section-heading"><div><p class="eyebrow">FEMININO & ELEGANTE</p><h2>Vestidos</h2></div></div>
+  <div class="products" id="vestidosGrid"></div>
+</section>
+
+<section class="products-section compact" id="conjuntos">
+  <div class="section-heading"><div><p class="eyebrow">PRÁTICOS & ESTILOSOS</p><h2>Conjuntos</h2></div></div>
+  <div class="products" id="conjuntosGrid"></div>
+</section>
+
+<section class="info-grid" id="entrega">
+  <article>
+    <span class="info-icon">🚚</span>
+    <h3>Fazemos entrega</h3>
+    <p>Enviamos seu pedido com praticidade. <strong>Consulte sua taxa</strong> informando seu bairro ou cidade no atendimento.</p>
+  </article>
+  <article>
+    <span class="info-icon">💳</span>
+    <h3>Pagamento</h3>
+    <p>Aceitamos <strong>Pix, dinheiro, débito e crédito</strong>.</p>
+  </article>
+  <article>
+    <span class="info-icon">💬</span>
+    <h3>Pedido pelo WhatsApp</h3>
+    <p>Escolha suas peças, confira o carrinho e envie o pedido para nosso WhatsApp.</p>
+  </article>
+</section>
+
+<section class="about" id="sobre">
+  <div class="about-card">
+    <p class="eyebrow">SOBRE A JS CLOSET</p>
+    <h2>Moda para você se sentir ainda mais linda.</h2>
+    <p>A JS Closet nasceu para unir estilo, delicadeza e praticidade em uma experiência de compra acolhedora. Escolhemos cada detalhe pensando em você.</p>
+    <a class="whatsapp-link" id="aboutWhatsapp" href="#" target="_blank" rel="noopener">Falar com a JS Closet no WhatsApp →</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-brand"><span class="brand-mark">JS</span><strong>JS Closet</strong></div>
+  <p>Moda feminina • Estilo • Elegância</p>
+  <p class="copyright">© <span id="year"></span> JS Closet. Todos os direitos reservados.</p>
+</footer>
+
+<div class="overlay" id="overlay" onclick="closeCart(event)">
+  <aside class="cart" onclick="event.stopPropagation()">
+    <div class="cart-head"><h2>Seu carrinho</h2><button onclick="closeCart()">×</button></div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-summary">
+      <div><span>Subtotal</span><strong id="cartTotal">R$ 0,00</strong></div>
+      <p>🚚 A taxa de entrega será consultada conforme seu endereço.</p>
+      <button class="btn primary full" onclick="openCheckout()">Finalizar pelo WhatsApp</button>
+    </div>
+  </aside>
+</div>
+
+<div class="overlay" id="checkoutOverlay" onclick="closeCheckout(event)">
+  <section class="checkout" onclick="event.stopPropagation()">
+    <div class="cart-head"><h2>Finalizar pedido</h2><button onclick="closeCheckout()">×</button></div>
+    <form id="checkoutForm">
+      <label>Nome<input required name="name" placeholder="Seu nome"></label>
+      <label>WhatsApp<input required name="phone" placeholder="(00) 00000-0000"></label>
+      <label>Endereço / bairro<input required name="address" placeholder="Onde deseja receber?"></label>
+      <label>Forma de pagamento
+        <select required name="payment">
+          <option value="">Selecione</option>
+          <option>Pix</option><option>Dinheiro</option><option>Débito</option><option>Crédito</option>
+        </select>
+      </label>
+      <label>Observação (opcional)<textarea name="note" rows="3" placeholder="Tamanho, cor ou outra informação"></textarea></label>
+      <p class="checkout-note">Após enviar, nossa equipe confirma disponibilidade, valor da entrega e total do pedido pelo WhatsApp.</p>
+      <button class="btn primary full" type="submit">Enviar pedido no WhatsApp 💗</button>
+    </form>
+  </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
